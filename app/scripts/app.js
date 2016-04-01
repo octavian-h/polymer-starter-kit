@@ -70,6 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     // Scale middleContainer appName
     // Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', appName);
+    Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', bottomContainer);
   });
 
   // Scroll page to top and expand header
