@@ -17,13 +17,12 @@
 
 COMMIT_MESSAGE="$(git log --format=%B -n 1 ${TRAVIS_COMMIT})"
 
-if [ "$TRAVIS_BRANCH" = "master" ] &&
-   [ "$TRAVIS_PULL_REQUEST" == "false" ] &&
+if [ "$TRAVIS_PULL_REQUEST" == "false" ] &&
    [[ "$COMMIT_MESSAGE" != "[no-deploy]"* ]]; then
 
     echo "Deploying to users.utcluj.ro"
     gulp
-    lftp -u $FTP_USER,$FTP_PASS users.utcluj.ro -e 'mirror -c -e -R -v dist ~/public_html ; exit'
+    lftp -u $FTP_USER,$FTP_PASS users.utcluj.ro -e 'mirror --delete --only-newer --reverse --verbose dist ~/public_html ; exit'
 else
    echo "Skip deploy"
 fi

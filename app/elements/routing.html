@@ -27,11 +27,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       next();
     }
 
-    function closeDrawer(ctx, next) {
-      app.closeDrawer();
-      next();
-    }
-
     function setFocus(selected){
       Polymer.dom(document)
         .querySelector('section[data-route="' + selected + '"] .focus-target')
@@ -39,7 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     // Routes
-    page('*', scrollToTop, closeDrawer, function(ctx, next) {
+    page('*', scrollToTop, function(ctx, next) {
       next();
     });
 
@@ -53,14 +48,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       setFocus(app.route);
     });
 
-    page('/users', function() {
-      app.route = 'users';
+    page('/teaching', function() {
+      app.route = 'teaching';
       setFocus(app.route);
     });
 
-    page('/users/:name', function(data) {
-      app.route = 'user-info';
-      app.params = data.params;
+    page('/research', function() {
+      app.route = 'research';
       setFocus(app.route);
     });
 

@@ -1,28 +1,25 @@
 language: node_js
-sudo: false
-os: linux
-addons:
-#  firefox: latest
-  apt:
-#    sources:
-#    - google-chrome
-#    - ubuntu-toolchain-r-test
-    packages:
-#    - google-chrome-stable
-#    - g++-4.8
-    - lftp
 node_js:
 - '5.1'
+
+os: linux
+sudo: false
+addons:
+  apt:
+    packages:
+    - lftp
+
+branches:
+  only:
+  - master
+
 before_script:
-#- export DISPLAY=:99.0
-#- sh -e /etc/init.d/xvfb start
-#- sleep 3
 - npm install -g bower@1.7.1 gulp@3.9.0
 - bower install
 script:
 - "./travis-runner.sh"
+
 env:
   global:
-#  - CXX='g++-4.8'
   - secure: AeNNT+zrGBqxT+15h3VmKzAu6exCSiD4O9DgKhCJ1vGNKsub0xepbGeW61C/Jg0Lk2uiB2If0zDq3r8F7bBXJAHLiLudU/qKQSPXuGpyoSoA9jDTKSbQ0EdvsBA3EIKIYQ5+LQ12u7d1AoJB1Bxe8CesGK7a/AetMCCT+e8NvNe22Zr9ORc6MC2FmdZUT0QO0kZ/+mHVNMDOuTAn9JI19N8KIqdDYoPMhPuWE05Ofly5lbHPiOGwJsD1vSPBO8n9r20UDflSr7uj5Qk0sg/0EiMG2tqgpJQkNu3lOghUqpsPj0LHCtlcGBMsH7Azqoi2JU4SqW5zYztom49D5vWWJmMzOPEuGB1OsAldVW77e2Ds7Jjv2GmpW8AgfmM7wMMdwF9vqym7t0hH8XTdS+LI2KgIASGqnQQnWfDuwt3ogMTC1llO56bG0fAV94IKykE6cs9J+TWFI46hQIwkKn6SsGh0Uc4eKS75CC7+JwEnt2oCTRGYzR4o1+9gOhFGA4J0ddjLnJJl1f9z6vg3V/KiYk6Rkhd6E+WSlvLx/el1B6BihOg3heRE5Ql1NeSscpOn0Wmum3t+ylCxJHE6KcBZHMIVXjIe+fVd8hLSAs8jhszecy06GI7iK4UJOIHWpuWKwIsbpqOkquYCOw8K8zwu0n/lxW0nMbhLE7zLzSoMk5U=
   - secure: oRqBmt6oKO6r64OxCUHghMtZk3zQICQU1Ox8mXfMKBEV+waMt4DGHxudQbye1tARdpPpvxyKwFqBj3wssaOVxuVji9fLQ8p4r8QBR2XRbHuvBBnqtuxbYWsjht+uxauWO5raACUhYjcRzdHqR9Dv4gtK8tPk0LH28tDX++FkCENMV5qT/pEHFv/4YR1Di6o8F5SWGXsfCUp+odA0oFjd+wmad8wqvfFZhnC+R12NWr00Ix0sbG5ySDax84shp5EfvPe2jmbKle5iqOFIlNfEQYngCGq5nhix9740YeQt6Zc8tscu302Ba14n89z1kWw6XAoe0udTzcepNuln4odaAvAJTggtLy10UwKYO/QpgfPalPiUjuT2VUg3X9DFy+1jifCVxZoivo65aF6oH3uUqLuE6mKTRCimg7UYv1s80o3xiaxSQiF6jus38B3xQL/qWDE8GzxMWdICbNPqlRsC+ZFqikMKGY40M9Ozcztc2716pb6sqAUT8anyHUtAIf4GY4VD09IwtpBcIqPgIoL4xTNwPYLrqD0dDyRVmhVTsG34Vjqj+yXBvjGo7efW84vUEKASEm3sX9LNlrJikMPfWbYT6YdQFaRqtNOmiyPMGF5IV3SRs5WCdyPn1zJobd76Dt8YRKYgFUCrrK9ezbfUPlqqH+xMiS5k80uRoTF/l+o=

@@ -24,13 +24,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     app.baseUrl = '/~octavianh/';
   }
 
-  app.displayInstalledToast = function() {
-    // Check to make sure caching is actually enabled—it won't be in the dev environment.
-    if (!Polymer.dom(document).querySelector('platinum-sw-cache').disabled) {
-      Polymer.dom(document).querySelector('#caching-complete').show();
-    }
-  };
-
   // Listen for template bound event to know when bindings
   // have resolved and content has been stamped to the page
   app.addEventListener('dom-change', function() {
@@ -47,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // The appName is moved to top and shrunk on condensing. The bottom sub title
   // is shrunk to nothing on condensing.
   window.addEventListener('paper-header-transform', function(e) {
-    var appName = Polymer.dom(document).querySelector('#mainToolbar .app-name');
+    // var appName = Polymer.dom(document).querySelector('#mainToolbar .app-name');
     var middleContainer = Polymer.dom(document).querySelector('#mainToolbar .middle-container');
     var bottomContainer = Polymer.dom(document).querySelector('#mainToolbar .bottom-container');
     var detail = e.detail;
@@ -55,9 +48,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var yRatio = Math.min(1, detail.y / heightDiff);
     // appName max size when condensed. The smaller the number the smaller the condensed size.
     var maxMiddleScale = 0.50;
-    var auxHeight = heightDiff - detail.y;
-    var auxScale = heightDiff / (1 - maxMiddleScale);
-    var scaleMiddle = Math.max(maxMiddleScale, auxHeight / auxScale + maxMiddleScale);
+    // var auxHeight = heightDiff - detail.y;
+    // var auxScale = heightDiff / (1 - maxMiddleScale);
+    var scaleMiddle = 1;//Math.max(maxMiddleScale, auxHeight / auxScale + maxMiddleScale);
     var scaleBottom = 1 - yRatio;
 
     // Move/translate middleContainer
@@ -76,10 +69,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Scroll page to top and expand header
   app.scrollPageToTop = function() {
     app.$.headerPanelMain.scrollToTop(true);
-  };
-
-  app.closeDrawer = function() {
-    app.$.paperDrawerPanel.closeDrawer();
   };
 
 })(document);
