@@ -23,7 +23,7 @@ if [ "$TRAVIS_BRANCH" = "master" ] &&
 
     echo "Deploying to users.utcluj.ro"
     gulp
-    lftp -u $FTP_USER,$FTP_PASS users.utcluj.ro -e 'mirror -c -e -R dist ~/public_html ; exit'
+    lftp -u $FTP_USER,$FTP_PASS users.utcluj.ro -e 'mirror -c -e -R -v dist ~/public_html ; exit'
 else
    echo "Skip deploy"
 fi
